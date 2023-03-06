@@ -15,32 +15,46 @@
           :collapse-transition='true'
           router=true
         >
-          <el-menu-item index="/">
-            <el-icon><i-ep-house /></el-icon>
-            <template #title>首页</template>
-          </el-menu-item>
-          <!-- <el-menu-item index="2">
+          <template v-for="(item) in routers" :key="item.name">
+            <template v-if="item.isSub">
+              <el-sub-menu :index="item.path">
+                <template #title>
+                  <el-icon :size="18">
+                    <component :is='item.icon'></component>
+                  </el-icon>
+                  <span>{{item.title}}</span>
+                </template>
+                <template v-for="it in item.children" :key="it.path">
+                  <el-menu-item :index="`${item.path}/${it.path}`">
+                    <el-icon :size="18">
+                      <component :is='it.icon'></component>
+                    </el-icon>
+                    {{ it.title }}
+                  </el-menu-item>
+                </template>
+              </el-sub-menu>
+            </template>
+            <template v-else>
+              <el-menu-item :index="item.path">
+                <el-icon :size="18">
+                  <component :is='item.icon'></component>
+                </el-icon>
+                <template #title>
+                  {{item.title}}
+                </template>
+              </el-menu-item>
+            </template>
+          </template>
+          <!-- 
+          <el-menu-item index="2">
             <el-icon><i-ep-Film /></el-icon>
             <template #title>数据大屏</template>
-          </el-menu-item> -->
+          </el-menu-item>
           <el-menu-item index="3">
             <el-icon><i-ep-Grid /></el-icon>
             <template #title>超级表格</template>
           </el-menu-item>
-          <el-sub-menu index="/echart">
-            <template #title>
-              <el-icon><i-ep-PieChart /></el-icon>
-              <span>Echarts</span>
-            </template>
-            <el-menu-item index="/echart/homeWater"><el-icon><i-ep-CollectionTag /></el-icon>水型图</el-menu-item>
-            <el-menu-item index="/echart/ranking"><el-icon><i-ep-CollectionTag /></el-icon>柱状图</el-menu-item>
-            <el-menu-item index="/echart/broken"><el-icon><i-ep-CollectionTag /></el-icon>折线图</el-menu-item>
-            <el-menu-item index="/echart/linkage"><el-icon><i-ep-CollectionTag /></el-icon>饼柱图联动</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="/animation">
-            <el-icon><i-ep-VideoCameraFilled /></el-icon>
-            <template #title>眼花缭乱动画</template>
-          </el-menu-item>
+           -->
         </el-menu>
       </el-aside>
       <el-container class="right">
@@ -64,10 +78,12 @@
 </template>
 
 <script>
+import router from '@/router'
 export default {
   data () {
     return {
-      isExpand: false
+      isExpand: false,
+      routers: router.options.routes
     }
   },
   methods: {
@@ -85,6 +101,7 @@ export default {
     }
   },
   mounted () {
+    console.log(123, router);
     this.listeningWindow()
   }
 }

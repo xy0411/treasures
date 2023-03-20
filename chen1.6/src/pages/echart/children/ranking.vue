@@ -1,6 +1,6 @@
 <template>
   <div class="ranking">
-    <h1>echarts横向柱状图排序</h1>
+    <div class="echart-header">echarts横向柱状图排序</div>
     <div ref="checkIn" id="checkIn"></div>
   </div>
 </template>
@@ -165,7 +165,7 @@ export default {
                 }
             ]
         }
-        document.getElementById('checkIn').style.height = (this.data.length - 1)*16.6 - 12 + '%'
+        document.getElementById('checkIn').style.height = (this.data.length - 1)*10.6 - 12 + '%' // 根据数据自适应
         myChart.setOption(options)
         // 使用element-resize-detector插件自适应
         ele().listenTo(this.$refs.checkIn, function(e) {
@@ -191,6 +191,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .echart-header {
+    font-size: .3rem;
+    font-weight: bold;
+  }
   #checkIn {
     border-radius: 2%;
     background: rgb(9, 15, 68);

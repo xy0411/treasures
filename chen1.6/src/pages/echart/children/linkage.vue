@@ -1,6 +1,6 @@
 <template>
   <div class="linkage">
-    <h1>echarts柱状图饼图毫无违和的联动</h1>
+    <div class="echart-header">echarts柱状图饼图毫无违和的联动</div>
     <div class="com-loss-chart">
       <div class="com-loss-chart-left">
         <div id="area-ele" ref="areaEle"></div>
@@ -319,6 +319,10 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  .echart-header {
+    font-size: .3rem;
+    font-weight: bold;
+  }
   #total-ele-ala {
     width: 100%;
   }

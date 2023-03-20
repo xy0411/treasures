@@ -1,6 +1,6 @@
 <template>
   <div class="broken">
-    <h1>echarts柱状图折线图混合</h1>
+    <div class="echart-header">echarts柱状图折线图混合</div>
     <div id="comloss"></div>
   </div>
 </template>
@@ -294,6 +294,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .echart-header {
+    font-size: .3rem;
+    font-weight: bold;
+  }
   #comloss {
     width: 60%;
     height: 55%;

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>echarts流体图示例</h1>
+    <div class="echart-header">echarts流体图示例</div>
     <div ref="draw1" id="draw1"></div>
     <div ref="draw2"></div>
     <div ref="draw3"></div>
@@ -328,6 +328,10 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  .echart-header {
+    font-size: .3rem;
+    font-weight: bold;
+  }
   #draw1 {
     width: 100%;
     height: 60%;

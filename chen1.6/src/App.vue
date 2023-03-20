@@ -14,7 +14,7 @@ import layout from "@/layout/layout.vue";
 export default {
   data() {
     return {
-      isMenu: true
+      isMenu: false
     }
   },
   components: {

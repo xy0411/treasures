@@ -61,8 +61,23 @@
           <el-icon v-else @click="changeExpand"><i-ep-Fold /></el-icon>
         </div>
         <div class="right-header-avatar">
-          <span class="avatarName">billie</span>
-          <el-avatar src="src/assets/images/billie.png" />
+          <el-icon class="right-gap pointer" @click="enlargeOrshrink"
+            ><FullScreen
+          /></el-icon>
+          <span class="right-gap">billie</span>
+          <el-popconfirm
+            confirm-button-text="Yes"
+            cancel-button-text="No"
+            :icon="InfoFilled"
+            icon-color="#626AEF"
+            title="Are you sure to delete this?"
+            @confirm="confirmEvent"
+            @cancel="cancelEvent"
+          >
+            <template #reference>
+              <el-avatar src="src/assets/images/billie.png" />
+            </template>
+          </el-popconfirm>
         </div>
       </el-header>
       <el-main class="right-main">
@@ -76,7 +91,8 @@
 </template>
 
 <script>
-import router from '@/router/index'
+import router from "@/router/index";
+import screenfull from "screenfull";
 export default {
   data() {
     return {
@@ -96,6 +112,9 @@ export default {
           if (screenWidth > 1200) this.isExpand = false;
         })();
       };
+    },
+    enlargeOrshrink() {
+      screenfull.toggle();
     },
   },
   mounted() {
@@ -143,14 +162,18 @@ export default {
       justify-content: space-between;
       align-items: center;
       background-color: #fff;
+      font-size: 16px;
       .right-header-collapse {
         cursor: pointer;
       }
       .right-header-avatar {
         display: flex;
         align-items: center;
-        .avatarName {
+        .right-gap {
           padding-right: 20px;
+        }
+        .pointer {
+          cursor: pointer;
         }
       }
     }

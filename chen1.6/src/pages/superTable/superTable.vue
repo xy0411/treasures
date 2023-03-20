@@ -3,7 +3,21 @@
     <el-table :data="tableData" border style="width: 100%" class="super-table">
       <el-table-column type="index" width="55" align="center" label="序号" />
       <template v-for="it in tableInfo" :key="it.label">
-        <el-table-column :prop="it.prop" :label="it.label" :width="it.width" :align="it.align" />
+        <el-table-column
+          :prop="it.prop"
+          :label="it.label"
+          :width="it.width"
+          :align="it.align"
+        >
+          <template #default="scope">
+            <template v-if="it.prop !== 'date'">
+              <span v-html="scope.row[it.prop]"></span>
+            </template>
+            <template v-else>
+              <el-input v-model="scope.row.date"></el-input>
+            </template>
+          </template>
+        </el-table-column>
       </template>
     </el-table>
     <el-pagination
@@ -27,7 +41,7 @@ export default {
         ["name", "姓名", "", "center"],
         ["age", "出生日期", "", "center"],
         ["team", "所属运动队", "", "center"],
-        ["date", "填写日期", "", "center"]
+        ["date", "填写日期", "", "center"],
       ],
       tableData: [
         {
@@ -94,8 +108,8 @@ export default {
       paginations: {
         pageSize: 20,
         currentPage: 1,
-        total: 10
-      }
+        total: 10,
+      },
     };
   },
   methods: {

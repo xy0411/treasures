@@ -1,6 +1,5 @@
 <template>
   <div class="index">
-    <img src="src/assets/images/welcome.png" alt="">
   </div>
 </template>
 
@@ -15,9 +14,7 @@ export default {
 <style lang='less' scoped>
 .index {
   height: 100%;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  background-image: url('src/assets/images/welcome.png');
+  background-size: 100% 100%;
 }
 </style>

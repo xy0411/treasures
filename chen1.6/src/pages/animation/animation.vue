@@ -23,14 +23,14 @@ export default {};
   .outer {
     display: flex;
     justify-content: space-around;
-    padding: 20px 10px 0 10px;
-    width: 60%;
-    height: 500px;
-    border-bottom: 10px solid #000;
+    padding: 2rem 1rem 0 1rem;
+    width: 100rem;
+    height: 50rem;
+    border-bottom: 1rem solid #000;
     overflow: hidden;
     .box {
-      width: 100px;
-      height: 100px;
+      width: 10rem;
+      height: 10rem;
       border-radius: 50%;
       animation: ball 1s forwards linear infinite alternate;
     }
@@ -61,7 +61,7 @@ export default {};
     margin-top: 0;
   }
   to {
-    margin-top: calc(500px - 100px);
+    margin-top: calc(50rem - 10rem);
   }
 }
 </style>

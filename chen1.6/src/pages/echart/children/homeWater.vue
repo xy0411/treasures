@@ -329,7 +329,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   .echart-header {
-    font-size: .3rem;
+    font-size: 1.4rem;
     font-weight: bold;
   }
   #draw1 {

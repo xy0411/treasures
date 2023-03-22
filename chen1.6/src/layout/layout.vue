@@ -6,12 +6,13 @@
         <!-- <h3 v-show="!isExpand">器材管理系统</h3> -->
       </div>
       <el-menu
-        default-active="/"
+        :default-active="currentRoute"
         class="menu-vertical"
         :collapse="isExpand"
         background-color="rgb(0,21,41)"
         text-color="rgb(166,173,180)"
         :collapse-transition="true"
+        :unique-opened='true'
         router="true"
       >
         <template v-for="item in routers" :key="item.name">
@@ -44,12 +45,6 @@
             </el-menu-item>
           </template>
         </template>
-        <!-- 
-          <el-menu-item index="2">
-            <el-icon><i-ep-Film /></el-icon>
-            <template #title>数据大屏</template>
-          </el-menu-item>
-           -->
       </el-menu>
     </el-aside>
     <el-container class="right">
@@ -64,20 +59,21 @@
           <el-icon class="right-gap pointer" @click="enlargeOrshrink"
             ><FullScreen
           /></el-icon>
-          <span class="right-gap">billie</span>
-          <el-popconfirm
-            confirm-button-text="Yes"
-            cancel-button-text="No"
-            :icon="InfoFilled"
-            icon-color="#626AEF"
-            title="Are you sure to delete this?"
-            @confirm="confirmEvent"
-            @cancel="cancelEvent"
-          >
-            <template #reference>
+          <span class="right-gap">{{ userName }}</span>
+          <el-dropdown trigger='click' class="user-dropdown pointer">
+            <span class="el-dropdown-link">
               <el-avatar src="src/assets/images/billie.png" />
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="()=>{ this.$router.push('/')}">首页</el-dropdown-item>
+                <el-dropdown-item @click="showDialogPersonalValuesVisible">个人信息</el-dropdown-item>
+                <el-dropdown-item @click="showDialogChangePersonalValuesVisible">修改信息</el-dropdown-item>
+                <el-dropdown-item disabled>一个秘密</el-dropdown-item>
+                <el-dropdown-item @click="exit" divided>退出</el-dropdown-item>
+              </el-dropdown-menu>
             </template>
-          </el-popconfirm>
+          </el-dropdown>
         </div>
       </el-header>
       <el-main class="right-main">
@@ -86,6 +82,45 @@
       <el-footer class="right-footer" height="30px"
         >2023 Created by lql.</el-footer
       >
+      <el-dialog
+        v-model="dialogPersonalValuesVisible"
+        title="个人信息详细"
+        class='personal-values-dialog'
+        draggable
+      >
+        <el-form label-width="120px">
+          <el-form-item label="姓名">
+            <el-input disabled v-model="userValues.name" />
+          </el-form-item>
+          <el-form-item label="年龄">
+            <el-input disabled v-model="userValues.age" />
+          </el-form-item>
+          <el-form-item label="详细">
+            <el-input type="textarea" disabled v-model="userValues.textareas" />
+          </el-form-item>
+        </el-form>
+      </el-dialog>
+      <el-dialog
+        v-model="dialogChangePersonalValuesVisible"
+        title="修改个人信息"
+        class='personal-values-dialog'
+        draggable
+      >
+        <el-form label-width="120px">
+          <el-form-item label="姓名">
+            <el-input v-model="userValues.name" />
+          </el-form-item>
+          <el-form-item label="年龄">
+            <el-input v-model="userValues.age" />
+          </el-form-item>
+          <el-form-item label="详细">
+            <el-input type="textarea" v-model="userValues.textareas" />
+          </el-form-item>
+          <el-form-item>
+            <el-button @click="changeUserValues">保存</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
     </el-container>
   </el-container>
 </template>
@@ -93,11 +128,17 @@
 <script>
 import router from "@/router/index";
 import screenfull from "screenfull";
+import { useCommon } from '@store/index'
 export default {
   data() {
     return {
+      userName: '',
+      currentRoute: '/',
       isExpand: false,
       routers: router.options.routes,
+      dialogPersonalValuesVisible: false,
+      dialogChangePersonalValuesVisible: false,
+      userValues: {}
     };
   },
   methods: {
@@ -116,9 +157,34 @@ export default {
     enlargeOrshrink() {
       screenfull.toggle();
     },
+    exit() {
+      ElMessage({
+        type: 'error',
+        message: '糟糕, 退出失败！',
+        // duration: 0, // duration为0则不会自动关闭
+        // showClose: true // 显示关闭按钮
+      })
+    },
+    showDialogPersonalValuesVisible () {
+      this.dialogPersonalValuesVisible = true
+    },
+    showDialogChangePersonalValuesVisible() {
+      this.dialogChangePersonalValuesVisible = true
+    },
+    changeUserValues() {
+      useCommon().changePersonalUserValues(this.userValues)
+      this.dialogChangePersonalValuesVisible = false
+      this.userName = useCommon().userValues.name
+      this.$forceUpdate()
+    }
   },
   mounted() {
+    // 页面刷新获取当前路由地址，选中菜单
+    this.currentRoute = router.currentRoute._value.path
+    // 监听浏览器大小，收缩菜单侧栏
     this.listeningWindow();
+    this.userValues = JSON.parse(JSON.stringify(useCommon().userValues))
+    this.userName = useCommon().userValues.name
   },
 };
 </script>
@@ -182,6 +248,9 @@ export default {
       .view {
         background-color: #fff;
       }
+    }
+    .right-main > div {
+      overflow: hidden;
     }
     .right-footer {
       background-color: #fff;

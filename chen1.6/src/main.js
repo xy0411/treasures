@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from '@router/index'
 import 'element-plus/dist/index.css'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import '@/styles/App.less'
 
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 const app = createApp(App)
 

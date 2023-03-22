@@ -295,7 +295,7 @@ export default {
   justify-content: center;
   align-items: center;
   .echart-header {
-    font-size: .3rem;
+    font-size: 1.4rem;
     font-weight: bold;
   }
   #comloss {

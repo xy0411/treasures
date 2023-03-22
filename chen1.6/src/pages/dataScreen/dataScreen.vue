@@ -63,7 +63,7 @@ export default {
     align-items: center;
     .header_title {
       color: rgb(91, 174, 35);
-      font-size: .3rem;
+      font-size: 1.4rem;
       // 字间距 first use
       letter-spacing: 0.15rem;
     }
@@ -143,8 +143,8 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 1.1rem;
-    font-size: .3rem;
+    height: 10%;
+    font-size: 2.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

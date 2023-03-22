@@ -6,6 +6,7 @@ import echart from './modules/echart/routes'
 import animation from './modules/animation/routes'
 import superTable from './modules/superTable/routes'
 import dataScreen from './modules/dataScreen/routes'
+import externalLink from './modules/externalLink/routes'
 
 // 未作路由优先级排序，可暂时通过routes顺序设置
 const routes = [
@@ -14,7 +15,8 @@ const routes = [
     dataScreen,
     superTable,
     echart,
-    animation
+    animation,
+    externalLink
 ]
 
 const router = createRouter({

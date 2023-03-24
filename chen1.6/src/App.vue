@@ -1,20 +1,31 @@
 <template>
   <div class="main">
-    <template v-if="isMenu">
-      <layout></layout>
-    </template>
-    <template v-else>
-      <router-view></router-view>
-    </template>
+    <el-config-provider :locale="locale?zhCn:en" :size='size'>
+      <template v-if="isMenu">
+        <layout></layout>
+      </template>
+      <template v-else>
+        <router-view></router-view>
+      </template>
+    </el-config-provider>
   </div>
 </template>
 
 <script>
-import layout from "@/layout/layout.vue";
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import en from 'element-plus/dist/locale/en.mjs'
+import layout from "@/layout/layout.vue"
+import { useCommon } from '@store/index'
 export default {
   data() {
+    let locale = computed(()=>useCommon().configs.locale)
+    let size = computed(()=>useCommon().configs.size)
     return {
-      isMenu: false
+      isMenu: false,
+      locale: locale,
+      size: size,
+      zhCn: zhCn,
+      en: en
     }
   },
   components: {

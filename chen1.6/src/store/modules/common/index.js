@@ -10,6 +10,12 @@ export const useCommon = defineStore('useCommon', {
                 name: 'billie',
                 age: 21,
                 textareas: '美国加利福尼亚州洛杉矶，美国女歌手、词曲作者、模特'
+            },
+            // 全局配置
+            configs: {
+                size: 'default',
+                locale: true,
+                showFooter: true
             }
         }
     },
@@ -21,6 +27,12 @@ export const useCommon = defineStore('useCommon', {
     actions: {
         changePersonalUserValues(val) {
             this.userValues = val
+        },
+        changeConfigsLanguage() {
+            this.configs.locale = !this.configs.locale
+        },
+        changeConfigsSize(val) {
+            this.configs.size = val
         }
     },
     // 需修改pinia值，才能将state数据存入浏览器中

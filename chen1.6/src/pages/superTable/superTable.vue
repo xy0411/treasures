@@ -1,6 +1,6 @@
 <template>
   <div class="superTable">
-    <el-table :data="tableData" border style="width: 100%" class="super-table">
+    <el-table :data="tableData" border style="width: 100%" class="super-table" v-loading="loading" element-loading-text="拼命加载中...">
       <el-table-column type="index" width="55" align="center" label="序号" />
       <template v-for="it in tableInfo" :key="it.label">
         <el-table-column
@@ -43,7 +43,8 @@ export default {
         ["team", "所属运动队", "", "center"],
         ["date", "填写日期", "", "center"],
       ],
-      tableData: [
+      tableData: [],
+      tableDataTem: [
         {
           date: "2013年3月13日",
           name: "Kawhi Leonard",
@@ -110,6 +111,7 @@ export default {
         currentPage: 1,
         total: 10,
       },
+      loading: true
     };
   },
   methods: {
@@ -127,6 +129,10 @@ export default {
   },
   mounted() {
     this.transformationTableName(this.tableName, this.tableInfo);
+    setTimeout(()=> {
+      this.tableData = this.tableDataTem
+      this.loading = false
+    },2000)
   },
 };
 </script>

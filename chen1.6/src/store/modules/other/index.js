@@ -4,7 +4,7 @@ export const useOther = defineStore('useOther', {
     // 数据
     state: () => {
         return {
-            authPhone: 'oneplus'
+            value: 'local'
         }
     },
     // 计算
@@ -17,6 +17,7 @@ export const useOther = defineStore('useOther', {
     },
     persist: {
         enabled: true,
-        storage: sessionStorage
+        key: 'wcms',
+        storage: localStorage
     }
 })

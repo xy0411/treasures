@@ -9,6 +9,7 @@ import dataScreen from './modules/dataScreen/routes'
 import externalLink from './modules/externalLink/routes'
 import embeddedIframe from './modules/embeddedIframe/routes'
 import conjecture from './modules/conjecture/routes'
+import setUp from './modules/setUp/routes'
 import error from './modules/error/routes'
 
 // 未作路由优先级排序，可暂时通过routes顺序设置
@@ -21,6 +22,7 @@ const routes = [
     echart,
     conjecture,
     animation,
+    setUp,
     externalLink,
     error
 ]

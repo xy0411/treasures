@@ -23,14 +23,14 @@
                   <el-icon :size="18">
                     <component :is="item.icon"></component>
                   </el-icon>
-                  <span>{{ item.title }}</span>
+                  <span>{{ item.meta.title }}</span>
                 </template>
                 <template v-for="it in item.children" :key="it.path">
                   <el-menu-item :index="`${item.path}/${it.path}`">
                     <el-icon :size="18">
                       <component :is="it.icon"></component>
                     </el-icon>
-                    {{ it.title }}
+                    {{ it.meta.title }}
                   </el-menu-item>
                 </template>
               </el-sub-menu>
@@ -41,7 +41,7 @@
                   <component :is="item.icon"></component>
                 </el-icon>
                 <template #title>
-                  {{ item.title }}
+                  {{ item.meta.title }}
                 </template>
               </el-menu-item>
             </template>
@@ -56,6 +56,11 @@
             ><i-ep-Expand
           /></el-icon>
           <el-icon v-else @click="changeExpand"><i-ep-Fold /></el-icon>
+          <el-breadcrumb separator-icon='ArrowRight' class="breadcrumb">
+            <template v-for="it in route.currentRoute.value.matched" :key="it.name">
+              <el-breadcrumb-item>{{ it.meta.title }}</el-breadcrumb-item>
+            </template>
+          </el-breadcrumb>
         </div>
         <div class="right-header-avatar">
           <el-dropdown trigger="hover" class="user-dropdown pointer">
@@ -128,7 +133,7 @@
         <router-view class="view"></router-view>
       </el-main>
       <el-footer class="right-footer" height="30px"
-        >2023 Created by lql.</el-footer
+        >2023 Created by 9894.</el-footer
       >
       <el-dialog
         v-model="dialogPersonalValuesVisible"
@@ -172,6 +177,12 @@
       <el-drawer v-model="drawer" title="修改主题配置" :with-header="true" :show-close='false' class="layout-drawer">
         <p>Hi there!</p>
         <p>抱歉暂时无法修改任何主题配置!</p>
+        <!-- <div class="layout-form">
+          <div class="layout-form-item">
+            <span>底部栏显示</span>
+            <el-switch v-model="showFooter" @change="changFooterShow(showFooter)" />
+          </div>
+        </div> -->
       </el-drawer>
     </el-container>
   </el-container>
@@ -181,11 +192,14 @@
 import router from "@/router/index";
 import screenfull from "screenfull";
 import { useCommon } from "@store/index";
+import { computed } from 'vue';
 export default {
   data() {
+    let route = computed(() => router)
     let size = computed(() => useCommon().configs.size);
     let locale = computed(() => useCommon().configs.locale);
     return {
+      route: route,
       userName: "",
       currentRoute: "/",
       isExpand: false,
@@ -246,6 +260,7 @@ export default {
   mounted() {
     // 页面刷新获取当前路由地址，选中菜单
     this.currentRoute = router.currentRoute._value.path;
+    console.log(123, router);
     // 监听浏览器大小，收缩菜单侧栏
     this.listeningWindow();
     this.userValues = JSON.parse(JSON.stringify(useCommon().userValues));
@@ -295,7 +310,14 @@ export default {
       background-color: #fff;
       font-size: 16px;
       .right-header-collapse {
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        .el-icon {
+          cursor: pointer;
+        }
+        .breadcrumb {
+          margin-left: 10px;
+        }
       }
       .right-header-avatar {
         display: flex;
@@ -322,6 +344,13 @@ export default {
     }
     :deep(.layout-drawer) {
       width: 350px !important;
+      .layout-form {
+        .layout-form-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
     }
     .right-main > div {
       overflow: hidden;

@@ -25,14 +25,21 @@ export const useCommon = defineStore('useCommon', {
     },
     // 方法
     actions: {
+        // 修改全局用户名
         changePersonalUserValues(val) {
             this.userValues = val
         },
+        // 修改全局组件语言
         changeConfigsLanguage() {
             this.configs.locale = !this.configs.locale
         },
+        // 修改全局组件大小
         changeConfigsSize(val) {
             this.configs.size = val
+        },
+        // 显示隐藏底部栏
+        changeConfigsShowFooter(val) {
+            this.configs.showFooter = val
         }
     },
     // 需修改pinia值，才能将state数据存入浏览器中

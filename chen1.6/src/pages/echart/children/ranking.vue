@@ -28,6 +28,7 @@ export default {
   methods: {
     // 入住租客
     drawChart3(){
+        document.getElementById('checkIn').style.height = (this.data.length - 1)*10.6 - 12 + '%' // 根据数据自适应 调用 echarts.init 的时候，DOM 容器需要有宽高,否则图表显示会有问题。
         let myChart = echarts.init(document.getElementById('checkIn'))
         let options = {
             tooltip: {
@@ -165,7 +166,6 @@ export default {
                 }
             ]
         }
-        document.getElementById('checkIn').style.height = (this.data.length - 1)*10.6 - 12 + '%' // 根据数据自适应
         myChart.setOption(options)
         // 使用element-resize-detector插件自适应
         ele().listenTo(this.$refs.checkIn, function(e) {

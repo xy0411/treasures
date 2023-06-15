@@ -28,7 +28,7 @@ export default {
             icon: 'CollectionTag',
             component: () => import('@pages/echart/children/linkage.vue'),
             meta: {
-                title: '折线图'
+                title: '饼柱图联动'
             }
         },
         {
@@ -36,7 +36,7 @@ export default {
             icon: 'CollectionTag',
             component: () => import('@pages/echart/children/broken.vue'),
             meta: {
-                title: '饼柱图联动'
+                title: '柱折图'
             }
         }
     ],

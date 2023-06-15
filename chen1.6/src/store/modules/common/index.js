@@ -45,6 +45,7 @@ export const useCommon = defineStore('useCommon', {
     // 需修改pinia值，才能将state数据存入浏览器中
     persist: {
         enabled: true,
-        storage: sessionStorage
+        storage: sessionStorage, // 不支持跨标签页共享数据
+        // storage: localStorage // 支持跨标签页共享数据
     }
 })

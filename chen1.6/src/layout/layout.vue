@@ -104,7 +104,7 @@
           <span class="right-gap">{{ userName }}</span>
           <el-dropdown trigger="click" class="user-dropdown pointer">
             <span class="el-dropdown-link">
-              <el-avatar src="src/assets/images/billie.png" />
+              <el-avatar :src="img" />
             </span>
             <template #dropdown>
               <el-dropdown-menu>
@@ -193,12 +193,14 @@ import router from "@/router/index";
 import screenfull from "screenfull";
 import { useCommon } from "@store/index";
 import { computed } from 'vue';
+import img from '@/assets/images/billie.png' // el-avatar组件，发现使用本地图片路径无法显示,使用引入的方法解决
 export default {
   data() {
     let route = computed(() => router)
     let size = computed(() => useCommon().configs.size);
     let locale = computed(() => useCommon().configs.locale);
     return {
+      img: img,
       route: route,
       userName: "",
       currentRoute: "/",
@@ -260,7 +262,7 @@ export default {
   mounted() {
     // 页面刷新获取当前路由地址，选中菜单
     this.currentRoute = router.currentRoute._value.path;
-    console.log(123, router);
+    // console.log(123, router);
     // 监听浏览器大小，收缩菜单侧栏
     this.listeningWindow();
     this.userValues = JSON.parse(JSON.stringify(useCommon().userValues));

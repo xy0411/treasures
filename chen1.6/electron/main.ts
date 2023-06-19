@@ -39,7 +39,7 @@ const createWindow = () => {
 	// win.loadURL('http://localhost:5173')
 
 	// 打开开发者工具
-	// win.webContents.openDevTools()
+	win.webContents.openDevTools()
 }
 
 // electron打包需关闭计算机安全防护软件

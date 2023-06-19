@@ -8,6 +8,8 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import '@/styles/App.less'
 import httpUtil from '@utils/render.http.js'
 
+import i18n from './language/index'
+
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
@@ -18,4 +20,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
 
-app.use(router).use(pinia).mount('#app')
+app.use(router).use(i18n).use(pinia).mount('#app')

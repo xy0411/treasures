@@ -33,6 +33,7 @@
     "@vitejs/plugin-vue": "^3.2.0",
     "electron": "^25.1.1",
     "electron-builder": "^24.4.0",
+    "prettier": "^3.0.3",
     "vite": "^3.2.3"
   },
   "build": {

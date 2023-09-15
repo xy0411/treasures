@@ -14,7 +14,7 @@ const createWindow = () => {
 
 		// fullscreen: true, // 全屏
 
-		autoHideMenuBar: true, // 是否隐藏菜单，默认 false
+		autoHideMenuBar: false, // 是否隐藏菜单，默认 false
 
 		// 允许html页面上的javascipt代码访问nodejs 环境api代码的能力（与node集成的意思）
 		webPreferences: {
@@ -39,7 +39,7 @@ const createWindow = () => {
 	// win.loadURL('http://localhost:5173')
 
 	// 打开开发者工具
-	win.webContents.openDevTools()
+	// win.webContents.openDevTools()
 }
 
 // electron打包需关闭计算机安全防护软件

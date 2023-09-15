@@ -1,17 +1,15 @@
 <template>
-  <div class="conjecture">
-    <router-view></router-view>
-  </div>
+	<div class="conjecture">
+		<router-view></router-view>
+	</div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
 .conjecture {
-    height: 100%;
+	height: 100%;
 }
 </style>

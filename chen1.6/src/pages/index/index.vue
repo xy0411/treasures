@@ -1,23 +1,27 @@
 <template>
-  <div class="index">
-  </div>
+	<div class="index"></div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  },
-  mounted() {
-    console.log('hi~', this.$t('auth.name'));
-  }
+	data() {
+		return {
+			
+		};
+	},
+	mounted() {
+		console.log("hi~", this.$t("auth.name"));
+	},
+	methods: {
+		
+	}
 };
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .index {
-  height: 100%;
-  background-image: url('@/assets/images/welcome.png');
-  background-size: 100% 100%;
+	height: 100%;
+	background-image: url("@/assets/images/welcome.png");
+	background-size: 100% 100%;
 }
 </style>

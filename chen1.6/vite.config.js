@@ -11,6 +11,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/', // 打包部署nginx需与nginx配置文件路径相同，这里默认设置的base，不知道为什么不起作用
   plugins: [
     AutoImport({
       imports: ['vue'],

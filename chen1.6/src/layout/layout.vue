@@ -1,7 +1,7 @@
 <template>
 	<el-container class="container">
 		<el-aside class="left">
-			<div class="left-logo">
+			<div class="left-logo" @click="()=>{ this.$router.push('/') }">
 				<img src="https://cn.vitejs.dev/logo-with-shadow.png" alt="" />
 				<!-- <h3 v-show="!isExpand">器材管理系统</h3> -->
 			</div>
@@ -245,6 +245,14 @@ export default {
 		this.listeningWindow();
 		this.userValues = JSON.parse(JSON.stringify(useCommon().userValues));
 		this.userName = useCommon().userValues.name;
+	},
+	watch: {
+		$route: {
+			handler(val, old) {
+				// console.log(val.path);
+				this.currentRoute = val.path
+			}
+		}
 	}
 };
 </script>
@@ -258,6 +266,7 @@ export default {
 		overflow: hidden;
 		background-color: rgb(0, 21, 41);
 		.left-logo {
+			cursor: pointer;
 			width: 100%;
 			background-color: rgb(0, 21, 41);
 			border-right: 1px;

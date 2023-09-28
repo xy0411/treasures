@@ -8,6 +8,7 @@ import superTable from "./modules/superTable/routes";
 import dataScreen from "./modules/dataScreen/routes";
 import externalLink from "./modules/externalLink/routes";
 import embeddedIframe from "./modules/embeddedIframe/routes";
+import utilityTool from "./modules/utilityTool/routes";
 import conjecture from "./modules/conjecture/routes";
 import setUp from "./modules/setUp/routes";
 import error from "./modules/error/routes";
@@ -21,6 +22,7 @@ const routes = [
 	embeddedIframe,
 	echart,
 	conjecture,
+	utilityTool,
 	animation,
 	setUp,
 	externalLink,

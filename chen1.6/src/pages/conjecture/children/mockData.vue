@@ -66,6 +66,8 @@
 </template>
 
 <script>
+// vite可直接引用.json文件
+// import json from '@/../mockDev/state/newStaticLanding.json'
 export default {
 	data() {
 		return {
@@ -73,6 +75,7 @@ export default {
 		};
 	},
 	created() {
+		// console.log(123, json);
 		this.do();
 	},
 	methods: {

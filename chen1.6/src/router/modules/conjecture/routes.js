@@ -9,7 +9,7 @@ export default {
 	children: [
 		{
 			path: "deadlock",
-			icon: "Lock",
+			icon: "Loading",
 			component: () => import("@pages/conjecture/children/deadlock.vue"),
 			meta: {
 				title: "无限加载"
@@ -21,6 +21,30 @@ export default {
 			component: () => import("@pages/conjecture/children/mockData.vue"),
 			meta: {
 				title: "mock数据"
+			}
+		},
+		{
+			path: "encrypt",
+			icon: "Lock",
+			component: () => import("@pages/conjecture/children/encrypt.vue"),
+			meta: {
+				title: "密码加密"
+			}
+		},
+		{
+			path: "doubleTable",
+			icon: "Link",
+			component: () => import("@pages/conjecture/children/doubleTable.vue"),
+			meta: {
+				title: "双表格滚动条同步"
+			}
+		},
+		{
+			path: "carouselAvatar",
+			icon: "magic-stick",
+			component: () => import("@pages/conjecture/children/carouselAvatar.vue"),
+			meta: {
+				title: "轮播头像"
 			}
 		}
 	],

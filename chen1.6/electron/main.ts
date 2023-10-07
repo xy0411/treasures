@@ -1,4 +1,5 @@
-console.log('Hello from Electron 👋');
+// console.log('Hello from Electron 👋');
+console.log('Hello XiaoYang');
 
 import path from 'path';
 import { app, BrowserWindow, ipcMain, ipcRenderer, dialog } from 'electron';

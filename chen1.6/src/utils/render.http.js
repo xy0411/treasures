@@ -55,8 +55,8 @@ httpUtil.ajax = options => {
 		// 静态json资源
 		if (options.state && wcms == "local") {
 			options.url = options.api
-				? `../../mockDev/${options.state}/${options.url}.json`
-				: "../../mockDev/" + options.state + "/" + options.key + ".json";
+				? `./mockDev/${options.state}/${options.url}.json`
+				: "./mockDev/" + options.state + "/" + options.key + ".json"; // public文件夹下直接访问目录及文件
 		}
 
 		if (options.method == "GET" && options.data) {

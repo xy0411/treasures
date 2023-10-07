@@ -9,26 +9,26 @@
 </template>
 
 <script setup>
-// import bird from "@/assets/avatar/bird.png";
-// import butterfly from "@/assets/avatar/butterfly.png";
-// import dragon from "@/assets/avatar/dragon.png";
-// import monkey from "@/assets/avatar/monkey.png";
-// import rabbit from "@/assets/avatar/rabbit.png";
+import bird from "@/assets/avatar/bird.png";
+import butterfly from "@/assets/avatar/butterfly.png";
+import dragon from "@/assets/avatar/dragon.png";
+import monkey from "@/assets/avatar/monkey.png";
+import rabbit from "@/assets/avatar/rabbit.png";
 
-import json from '@/../mockDev/state/newStaticLanding.json'
+const img = ref([monkey, dragon, bird, butterfly, rabbit]);
 
-// 使用vite glob方法
-const modules = import.meta.glob("@/assets/avatar/*.png");
+// 使用vite glob方法 这个方法打包后不会更改路径 - 生产环境找不到路径
+// const modules = import.meta.glob("@/assets/avatar/*.png", { eager: true });
 
-// const img = ref([monkey, dragon, bird, butterfly, rabbit]);
-const img = ref([]);
+// const img = ref([]);
+
+// const keys = Object.keys(modules);
+// keys.forEach(it => {
+// 	let url = new URL(it, import.meta.url).href
+// 	img.value.push(url);
+// });
 
 const direction = ref(true);
-
-const keys = Object.keys(modules);
-keys.forEach(it => {
-	img.value.push(it);
-});
 
 setInterval(() => {
 	direction.value = !direction.value;

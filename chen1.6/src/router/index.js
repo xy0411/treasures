@@ -30,8 +30,8 @@ const routes = [
 ];
 
 const router = createRouter({
-	// history: createWebHashHistory(),
-	history: createWebHistory(),
+	history: createWebHashHistory(), // 使用hash路由避免electron打包路径找不到问题
+	// history: createWebHistory(),
 	routes
 });
 

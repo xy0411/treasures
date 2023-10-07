@@ -11,7 +11,8 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/', // 打包部署nginx需与nginx配置文件路径相同，这里默认设置的base，不知道为什么不起作用
+  // 打包部署nginx需与nginx配置文件路径相同，这里默认设置的base，不知道为什么不起作用
+  // base: '/',
   plugins: [
     AutoImport({
       imports: ['vue'],
@@ -67,6 +68,19 @@ export default defineConfig({
         target: '',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
+  build: {
+    assetsDir: 'static',
+    // esbuild 打包更快，但是不能去除 console.log，去除 console 使用 terser 模式
+    minify: "esbuild",
+    rollupOptions: {
+      output: {
+        // Static resource classification and packaging
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
+        assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
       }
     }
   }

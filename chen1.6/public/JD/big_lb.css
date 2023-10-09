@@ -1,0 +1,104 @@
+/* 大轮播图样式 */
+* {
+    margin: 0;
+    padding: 0;
+}
+#main {
+    width: 590px;
+    height: 480px;
+    margin: 0 auto;
+    position: relative;
+}
+#main .scrolling {
+    width: 590px;
+    height: 480px;
+    position: relative;
+}
+#main .scrolling img {
+    width: 100%;
+    height: 100%;
+}
+#main img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#main .btn {
+    width: 590px;
+    height: 220px;
+    position: absolute;
+    top: 207px;
+    left: 0;
+}
+#main .btn>div {
+    width: 30px;
+    height: 40px;
+    background: #fff;
+    opacity: 0.5;
+    /* 透明度 */
+}
+#main .btn:hover>div {
+    opacity: .35;
+}
+#main .btn #btnright {
+    position: absolute;
+    top: 14px;
+    right: 0;
+}
+#main .btn #btnleft {
+    position: absolute;
+    top: 14px;
+    left: 0;
+}
+#main .trianger {
+    margin-top: 0px;
+    width: 0;
+    height: 0;
+    border-width: 20px 10px;
+    border-style: solid;
+}
+#main #btnleft .trianger {
+    border-color: transparent #ccc transparent transparent;
+    /* 上 右 下 左 */
+}
+#main #btnright .trianger {
+    border-color: transparent transparent transparent #ccc;
+    margin-left: 12px;
+}
+#main .item {
+    position: absolute;
+    bottom: 30px;
+    left: 70px;
+    width: 200px;
+    height: 16px;
+}
+#main .item span {
+    width: 16px;
+    height: 16px;
+    background: #ccc;
+    display: inline-block;
+    border-radius: 50%;
+}
+#main .item span:hover {
+    cursor: pointer;
+    /* 设定网页浏览时用户鼠标指针的样式，pointer设定鼠标的形状为一只伸出的食指的手 */
+}
+.slider_indicators {
+    bottom: 16px;
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    font-size: 0;
+}
+.slider_indicators_btn_active {
+    background: #e1251b!important;
+}
+.slider_indicators_btn {
+    position: relative;
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-right: 4px;
+    border-radius: 50%;
+    background: #999;
+}

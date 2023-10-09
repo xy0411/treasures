@@ -1,0 +1,266 @@
+/* 下部分样式 */
+#app {
+    position: relative;
+    z-index: 10;
+    background-color: #e3e4e5;
+}
+#JD_seckill {
+    position: relative;
+    z-index: 10;
+}
+.seckill {
+    height: 260px;
+    margin-bottom: 20xp;
+}
+.jd_container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.seckill__inner {
+    background: #fff;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 京东限时秒杀样式 */
+.seckill-countdown {
+    background-image: url(https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/img/613f39ecb60e42dfec798a4ffc0bc012.png);
+    position: relative;
+    float: left;
+    width: 190px;
+    height: 100%;
+    color: #fff;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.countdown-title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 31px;
+}
+.countdown-desc {
+    margin-top: 90px;
+    font-size: 14px;
+    text-align: center;
+}
+.countdown-desc strong {
+    margin-bottom: 3px;
+    font-size: 18px;
+    padding-right: 2px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.countdown-main {
+    margin-left: 30px;
+    margin-right: auto;
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+    display: block;
+}
+.timmer {
+    color: #333;
+    font-weight: 700;
+}
+.timmer__unit {
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 20px;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+}
+.timmer__unit:after {
+    content: ":";
+    display: block;
+    position: absolute;
+    right: -20px;
+    font-size: 18px;
+    width: 20px;
+    height: 100%;
+    top: 0;
+}
+.timmer__unit--second:after {
+    content: none;
+}
+
+/* 四张连续轮转图样式 */
+.seckill-list {
+    position: relative;
+    float: left;
+    width: 800px;
+    height: 100%;
+    overflow: hidden;
+}
+.slider_control_prev {
+    left: 0;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.slider_control_prev div {
+   margin-right: 5px;
+}
+.slider_control_next {
+    right: 1px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+.slider_control_next div {
+    margin-left: 5px;
+}
+.slider_control {
+    position: absolute;
+    top: 50%;
+    width: 25px;
+    height: 35px;
+    line-height: 35px;
+    background-color: rgba(0,0,0,.15);
+    margin-top: -20px;
+    font-size: 20px;
+    z-index: 2;
+    border: none;
+    color: #fff;
+}
+.seckill-item {
+    position: relative;
+    height: 260px;
+    display: inline-block;
+}
+.seckill-item__image {
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.seckill-item__name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 13px;
+}
+.seckill-item__price {
+    position: relative;
+    line-height: 24px;
+    overflow: hidden;
+    text-align: center;
+    width: 160px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+}
+.price-origin {
+    height: 100%;
+    width: 66px;
+    background: #fff;
+    text-align: center;
+    color: #e1251b;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+}
+i {
+    font-style: normal;
+}
+.seckill-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 200px;
+    transform: translateY(-50%);
+    background: linear-gradient(180deg,white,#eeeeee,white);
+}
+
+/* 右下角品牌秒杀样式 */
+.seckill-brand {
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 260px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.seckill-brand__slider {
+    width: 100%;
+    height: 100%;
+}
+.seckill-brand .brand-item .item-info {
+    background: linear-gradient(180deg,rgba(255,255,255.5),rgba(220,224,236,.5));
+}
+.brand-item {
+    position: relative;
+    height: 240px;
+}
+.item-image {
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.lazyimg {
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+.lazyimg img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    vertical-align: middle;
+}
+.lazyimg-img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+.item-info {
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin-top: 10px;
+}
+.item-info-title {
+    color: #666;
+}
+.item-info-promo {
+    color: #333;
+    font-weight: 700;
+}
+.item-info-action {
+    color: #e1251b;
+    border-radius: 14px;
+    width: 82px;
+    height: 24px;
+    text-align: center;
+    display: inline-block;
+    line-height: 24px;
+    font-weight: 700;
+    padding-left: 4px;
+    font-size: 12px;
+    border: 1px solid #e1251b;
+    margin-top: 4px;
+}
+.item-info-action:hover {
+    color: #fff;
+    background-color: #e1251b;
+}

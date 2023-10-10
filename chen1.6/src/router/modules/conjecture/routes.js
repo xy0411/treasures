@@ -46,6 +46,14 @@ export default {
 			meta: {
 				title: "轮播头像"
 			}
+		},
+		{
+			path: "electronRelaxWindows",
+			icon: "monitor",
+			component: () => import("@pages/conjecture/children/electronRelaxWindows.vue"),
+			meta: {
+				title: "electron摸鱼小窗口"
+			}
 		}
 	],
 	isSub: true // 判断菜单下是否有多个子菜单

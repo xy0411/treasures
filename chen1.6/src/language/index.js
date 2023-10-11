@@ -5,10 +5,10 @@ import en from "./config/en";
 import enLocale from "element-plus/lib/locale/lang/en";
 import zhLocale from "element-plus/lib/locale/lang/zh-CN";
 
-//使用的是sessionStroage中存储的的lang，默认是中文简体cn
-let language = window.sessionStorage.getItem("lang") || "cn";
+//使用的是sessionStroage中存储的的pinia(需转化js对象)，默认是中文简体cn
+let language = JSON.parse(window.sessionStorage.getItem("useCommon")).configs.locale
 const i18n = createI18n({
-	locale: language, //将i18n的locale设置为你需要的语言
+	locale: language ? 'cn' : 'en', //将i18n的locale设置为你需要的语言
 	messages: {
 		cn: {
 			//中文简体

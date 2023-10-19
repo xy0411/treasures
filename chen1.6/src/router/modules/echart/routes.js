@@ -38,6 +38,14 @@ export default {
 			meta: {
 				title: "柱折图"
 			}
+		},
+		{
+			path: "through",
+			icon: "MapLocation",
+			component: () => import("@pages/echart/children/through.vue"),
+			meta: {
+				title: "穿越图"
+			}
 		}
 	],
 	isSub: true // 判断菜单下是否有多个子菜单

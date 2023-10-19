@@ -1,23 +1,25 @@
 import axios from "axios";
 
 // build http header
-// function buildHeader(option) {
-//   let token = storage.get('token') ? storage.get('token') : null
-//   if (!token) return {}
-//   let headers = {
-//       Authorization: token
-//   }
-//   if (option) {
-//       headers = { ...headers, ...option }
-//   }
-//   let headerUserId = storage.get('userInfo') ? JSON.parse(storage.get("userInfo")).user_id : null
+function buildHeader(option) {
+	// let token = storage.get('token') ? storage.get('token') : null
+	// if (!token) return {}
+	let headers = {
+		// Authorization: token
+		"Access-Control-Allow-Origin": '*',
+		'Content-Type':'application/x-www-form-urlencoded'
+	}
+	// if (option) {
+	// 	headers = { ...headers, ...option }
+	// }
+	// let headerUserId = storage.get('userInfo') ? JSON.parse(storage.get("userInfo")).user_id : null
 
-//   if (headerUserId) {
-//       headerUserId = Encrypt(headerUserId)
-//       headers['HeaderUserId'] = headerUserId
-//   }
-//   return headers
-// }
+	// if (headerUserId) {
+	// 	headerUserId = Encrypt(headerUserId)
+	// 	headers['HeaderUserId'] = headerUserId
+	// }
+	return headers
+}
 
 const httpUtil = axios.create({
 	headers: {
@@ -67,14 +69,14 @@ httpUtil.ajax = options => {
 			url: options.url,
 			method: options.method,
 			data: options.data ? options.data : null,
-			params: options.params ? options.params : null
-			// headers: buildHeader(options),
+			params: options.params ? options.params : null,
+			headers: buildHeader(options),
 		})
 			.then(res => {
 				resolve(res);
 			})
 			.catch(err => {
-				reject(err.data);
+				reject(err);
 			});
 	});
 };

@@ -5,12 +5,12 @@
 <script>
 export default {
 	data() {
-		return {
-			
-		};
+		return {};
 	},
 	mounted() {
 		console.log("hi~", this.$t("auth.name"));
+
+		// console.log(import.meta.env);
 	},
 	methods: {
 		

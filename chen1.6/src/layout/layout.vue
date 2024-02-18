@@ -1,7 +1,14 @@
 <template>
 	<el-container class="container">
 		<el-aside class="left">
-			<div class="left-logo" @click="()=>{ this.$router.push('/') }">
+			<div
+				class="left-logo"
+				@click="
+					() => {
+						this.$router.push('/');
+					}
+				"
+			>
 				<img src="https://cn.vitejs.dev/logo-with-shadow.png" alt="" />
 				<!-- <h3 v-show="!isExpand">器材管理系统</h3> -->
 			</div>
@@ -89,6 +96,16 @@
 							</el-dropdown-menu>
 						</template>
 					</el-dropdown>
+					<span v-show="false" class="right-gap zh-en pointer" @click="changeThemmColor">
+						<sapn id="toggle-dark-mode">
+							<span v-show="!isDark">亮</span>
+							<span v-show="isDark">暗</span>
+						</sapn>
+						<sapn v-show="false" id="reset-to-system">
+							<span v-show="isDark">亮</span>
+							<span v-show="!isDark">暗</span>
+						</sapn>
+					</span>
 					<span class="right-gap zh-en pointer" @click="changeLanguage">
 						<sapn v-if="isZh">中</sapn>
 						<sapn v-else>英</sapn>
@@ -188,6 +205,7 @@ export default {
 			dialogChangePersonalValuesVisible: false,
 			userValues: {},
 			isZh: locale,
+			isDark: false,
 			selectSize: size,
 			drawer: false
 		};
@@ -201,6 +219,9 @@ export default {
 		},
 		changeLanguage() {
 			useCommon().changeConfigsLanguage();
+		},
+		changeThemmColor() {
+			this.isDark = !this.isDark;
 		},
 		changeExpand() {
 			this.isExpand = !this.isExpand;
@@ -245,12 +266,22 @@ export default {
 		this.listeningWindow();
 		this.userValues = JSON.parse(JSON.stringify(useCommon().userValues));
 		this.userName = useCommon().userValues.name;
+
+		this.$nextTick(() => {
+			document.getElementById("toggle-dark-mode").addEventListener("click", async () => {
+				const isDarkMode = await window.darkMode.toggle();
+			});
+
+			document.getElementById("reset-to-system").addEventListener("click", async () => {
+				await window.darkMode.system();
+			});
+		});
 	},
 	watch: {
 		$route: {
 			handler(val, old) {
 				// console.log(val.path);
-				this.currentRoute = val.path
+				this.currentRoute = val.path;
 			}
 		}
 	}
@@ -258,6 +289,23 @@ export default {
 </script>
 
 <style lang="less" scoped>
+:root {
+	color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #333;
+		color: white;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		background: #ddd;
+		color: black;
+	}
+}
 .container {
 	height: 100vh;
 	display: flex;

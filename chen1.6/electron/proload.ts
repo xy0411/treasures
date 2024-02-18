@@ -11,3 +11,12 @@ contextBridge.exposeInMainWorld('electronApi',{
   setTitle: (title: string) => ipcRenderer.send('set-title', title),
   openFile: () => ipcRenderer.invoke('dialog:openFile')
 })
+
+contextBridge.exposeInMainWorld('darkMode', {
+  toggle: ()=> ipcRenderer.invoke('dark-mode:toggle'),
+  system: ()=> ipcRenderer.invoke('dark-mode:system')
+})
+
+contextBridge.exposeInMainWorld('electron', {
+  startDrag: (fileName) => ipcRenderer.send('ondragstart', fileName)
+})

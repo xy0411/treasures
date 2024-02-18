@@ -14,6 +14,14 @@ export default {
 			meta: {
 				title: "密码解密"
 			}
+		},
+		{
+			path: "dragDrop",
+			icon: "Key",
+			component: () => import("@pages/utilityTool/children/dragDrop.vue"),
+			meta: {
+				title: "文件拖拽"
+			}
 		}
 	],
 	isSub: true // 判断菜单下是否有多个子菜单

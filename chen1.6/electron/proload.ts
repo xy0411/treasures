@@ -18,5 +18,5 @@ contextBridge.exposeInMainWorld('darkMode', {
 })
 
 contextBridge.exposeInMainWorld('electron', {
-  startDrag: (fileName) => ipcRenderer.send('ondragstart', fileName)
+  startDrag: (fileName: any) => ipcRenderer.send('ondragstart', fileName)
 })

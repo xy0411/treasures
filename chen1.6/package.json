@@ -21,6 +21,7 @@
     "pinia": "^2.0.27",
     "pinia-plugin-persistedstate": "^3.1.0",
     "screenfull": "^6.0.2",
+    "three": "^0.165.0",
     "unplugin-auto-import": "^0.12.0",
     "unplugin-icons": "^0.14.14",
     "unplugin-vue-components": "^0.22.11",
@@ -31,6 +32,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@electron-forge/publisher-github": "^7.4.0",
     "@iconify-json/ep": "^1.1.8",
     "@vitejs/plugin-vue": "^3.2.0",
     "electron": "^25.1.1",
@@ -44,11 +46,13 @@
     "asar": true,
     "copyright": "Copyright © 2023 Yang.Xiao1",
     "directories": {
-      "output": "release/"
+      "output": "release/",
+      "buildResources": "build"
     },
     "files": [
       "dist",
-      "dist-electron"
+      "dist-electron",
+      "./public/images"
     ],
     "extends": null,
     "mac": {

@@ -54,6 +54,14 @@ export default {
 			meta: {
 				title: "electron摸鱼小窗口"
 			}
+		},
+		{
+			path: "threeByLql",
+			icon: "Platform",
+			component: () => import("@pages/conjecture/children/threeByLql.vue"),
+			meta: {
+				title: "钱老板的粒子效果"
+			}
 		}
 	],
 	isSub: true // 判断菜单下是否有多个子菜单

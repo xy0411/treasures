@@ -295,3 +295,28 @@ export function selfUseShowNotification(content: string, title?: string) {
 // ipcMain.handle('dark-mode:system', () => {
 // 	nativeTheme.themeSource = 'system'
 // })
+
+// 监控内存使用
+function monitorMemory() {
+	const used = process.memoryUsage();
+	for(const key in used) {
+		console.log(`${key}: ${Math.round(used[key] / 1024 / 1024)}MB`);
+	}	
+	console.log('----------------------------');
+}
+
+// 设置内存使用限制
+function setMemoryLimit() {
+	// 注意：这个功能只在v8引擎版本4.9以上可用
+	const v8 = require('v8');
+	if (v8.setFlagsFromString) {
+	  v8.setFlagsFromString('--max-old-space-size=300'); // 限制为300MB
+	} else {
+	  console.log('无法设置内存使用限制，v8版本不支持。');
+	}
+  }
+
+app.on('ready', ()=>{
+	setMemoryLimit();
+	setInterval(monitorMemory, 5000)
+})
